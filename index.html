@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- page adjusts layout properly on all devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Phonebook Using JavaScript</title>
+
+        <!-- Google fonts link Plus Jakarta Sans & Outfit -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+            rel="stylesheet">
+        <!-- bootstrap css link -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous">
+
+        <!-- bootstrap icons link -->
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+        <!-- custom css file -->
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body class="bg-dark">
+
+        <!-- navigation bar -->
+        <nav class="navbar navbar-expand-lg mt-3">
+            <div class="container align-items-center">
+
+                <!-- website logo -->
+                <a class="navbar-brand text-logo text-white fw-bold"
+                    href="index.html">
+                    <span>Phone</span>book
+                </a>
+
+                <!-- toggle button for small screens -->
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- navigation links -->
+                <div class="collapse navbar-collapse justify-content-end"
+                    id="navbarNav">
+                    <ul
+                        class="navbar-nav mb-2 align-items-lg-center fs-6 text-white mb-lg-0">
+
+                        <!-- link to contact list section -->
+                        <li>
+                            <a class="nav-link hover linactive text-white"
+                                href="#contactList">
+                                Contacts
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+
+        <main class="mt-5">
+
+            <!-- action buttons section -->
+            <div
+                class="actions-btn d-flex gap-2 gap-lg-4 justify-content-center">
+                <!-- add new contact button opens modal -->
+                <a class="add-btn"
+                    href="#"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addContactModal"
+                    data-modal-title="Add New Contact">
+                    <i class="bi bi-person-plus-fill me-2"></i>
+                    Add New Contact
+                </a>
+
+                <form class="d-flex gap-2">
+                    <input type="text"
+                        class="search-input form-control text-white"
+                        id="searchInput" placeholder="Search your contacts">
+                    <button type="submit" class="btn search-btn"><i
+                            class="bi bi-search"></i></button>
+                </form>
+
+            </div>
+
+            <!-- modal for adding or editing contact -->
+            <div class="modal fade" id="addContactModal" tabindex="-1"
+                aria-labelledby="addContactModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content bg-dark text-white">
+
+                        <!-- modal header with title text -->
+                        <div class="modal-header border-secondary">
+                            <h5 class="modal-title"
+                                id="addContactModalLabel">
+                                <!-- label changes through javascript -->
+                            </h5>
+
+                            <!-- close button -->
+                            <button type="button"
+                                class="btn-close btn-close-white"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+
+                        <!-- modal form body -->
+                        <div class="modal-body">
+                            <form id="addContactForm">
+
+                                <!-- name input field -->
+                                <div class="mb-3">
+                                    <label for="contactName"
+                                        class="form-label">Full Name</label>
+                                    <input type="text"
+                                        class="form-control bg-secondary text-white border-0"
+                                        id="contactName"
+                                        placeholder="Enter contact name"
+                                        required>
+                                </div>
+
+                                <!-- phone number input field -->
+                                <div class="mb-3">
+                                    <label for="contactPhone"
+                                        class="form-label">Phone Number</label>
+                                    <input type="tel"
+                                        class="form-control bg-secondary text-white border-0"
+                                        id="contactPhone"
+                                        placeholder="Enter phone number"
+                                        required>
+                                </div>
+
+                                <!-- email input field -->
+                                <div class="mb-3">
+                                    <label for="contactEmail"
+                                        class="form-label">Email
+                                        (optional)</label>
+                                    <input type="email"
+                                        class="form-control bg-secondary text-white border-0"
+                                        id="contactEmail"
+                                        placeholder="Enter email address">
+                                </div>
+
+                                <!-- submit button -->
+                                <button type="submit"
+                                    class="btn btn-info w-100 fw-semibold">
+                                    Save Contact
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toast Notification -->
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                <div id="successToast"
+                    class="toast align-items-center text-white bg-success border-0"
+                    role="alert">
+                    <div class="d-flex">
+                        <div class="toast-body" id="toastMessage"></div>
+                        <button type="button"
+                            class="btn-close btn-close-white me-2 m-auto"
+                            data-bs-dismiss="toast"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- contacts list container -->
+            <div class="container mt-4">
+                <div
+                    class="contact-list bg-secondary bg-opacity-25 p-4 rounded-4 shadow-lg">
+
+                    <!-- heading of saved contacts section -->
+                    <h4 class="text-white mb-4">Saved Contacts</h4>
+
+                    <!-- list of contacts -->
+                    <ul id="contactList" class="list-group list-group-flush">
+
+                        <!-- message when no contacts are available -->
+                        <li id="noItems"
+                            class="list-group-item d-none bg-transparent border-0">
+                            <p class="text-white text-center">
+                                No contacts found, add a new one to get started
+                                ❤️
+                            </p>
+                        </li>
+
+                        <li id="noSearch"
+                            class="list-group-item d-none bg-transparent border-0">
+                            <p class="text-white text-center">
+                                Contact not found
+                            </p>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </main>
+        
+        <!-- bootstrap javascript -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+        <!-- custom javascript file -->
+        <script src="script.js"></script>
+
+        <!-- footer section -->
+        <footer class="text-center text-white mt-4 mb-3">
+            <p class="mb-0">
+                &copy;Phone Book App. All rights reserved.
+            </p>
+            <p class="small text-secondary mb-0">
+                Developed by Joyal Ks
+            </p>
+        </footer>
+
+    </body>
+</html>

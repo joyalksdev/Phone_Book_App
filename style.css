@@ -1,0 +1,123 @@
+body{
+    font-family: 'Plus Jakarta Sans';
+}
+
+::selection {
+    background-color: #9cbefc;
+    color: #1e1e1e;
+}
+
+.text-logo {
+    font-size: 25px;
+    color: #00ffff;
+    font-family: 'Outfit';
+}
+
+.text-logo span {
+    color: #00ffff;
+
+}
+
+.hover {
+    transition: all 0.3s ease;
+}
+
+.hover:hover {
+    color: #cccbcb !important;
+}
+
+.linactive {
+    color: #40e0d0 !important;
+}
+
+.add-btn {
+    border: none !important;
+    text-decoration: none !important;
+    background-color: #72bec1 !important;
+    color: #282828 !important;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 7px;
+    transition: all 0.3s linear;
+}
+
+.add-btn:hover {
+    background-color: #77d6cc !important;
+    box-shadow: -1px 0px 44px -16px #8bc0ba;
+}
+
+.search-input {
+    background-color: #323434;
+    border: none;
+    transition: 0.3s all ease;
+}
+
+.search-input::placeholder {
+    color: #a7a7a7;
+}
+
+.search-input:focus {
+    background-color: #3c3d3d;
+    border-color: #00ffff !important;
+    color: #00ffff !important;
+}
+
+.search-btn {
+    border: none !important;
+    text-decoration: none !important;
+    background-color: #72bec1 !important;
+    color: #282828 !important;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 7px;
+
+}
+
+
+.search-btn:hover {
+    background-color: #77d6cc !important;
+    box-shadow: -1px 0px 44px -16px #8bc0ba;
+}
+
+.contact-list {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: #2d2d2d;
+    border-radius: 15px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+}
+
+.email {
+    color: #e6e5e5;
+    font-size: 14px;
+    margin: 0;
+}
+
+.list-group-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.btn-outline-info,
+.btn-outline-danger {
+    border: none;
+}
+
+.btn-outline-info:hover {
+    background-color: #5bc0de;
+    color: #1e1e1e;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.navbar-toggler-icon {
+    filter: brightness(0) invert(1) !important;
+}
+
+.navbar-toggler:focus {
+    border-color: rgb(50, 131, 193) !important;
+}
